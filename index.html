@@ -65,7 +65,16 @@
   .callout-right .lead::after{left:-2.5px;}
   .callout-stack{position:relative;width:260px;}
   .callout-stack .callout{position:absolute;left:0;top:0;}
-  @media (max-width:1200px){
+  /* タブレット横向き(iPad landscapeは概ね1024〜1194px)は左右並びを維持したまま少し縮める */
+  @media (min-width:861px) and (max-width:1200px){
+    .callout{width:clamp(170px,18vw,220px);font-size:12px;}
+    .callout-left{padding-right:12px;}
+    .callout-right{padding-left:12px;}
+    .callout-stack{width:clamp(170px,18vw,220px);}
+    .poster-img{width:clamp(380px,46vw,560px);}
+  }
+  /* スマホ・タブレット縦向きは横に並べる余白が足りないため縦積みに切り替え */
+  @media (max-width:860px){
     .shot{flex-direction:column;}
     .callout{width:auto;max-width:340px;justify-content:center!important;text-align:center!important;
       padding:0!important;margin:14px 0;}
